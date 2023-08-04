@@ -10,7 +10,7 @@ const HomePage = () => {
         <h1 className=" text-6xl font-bold bg-gradient-to-b from-green-500 to-gray-300 bg-clip-text text-transparent">
           this is a design for Limamia
         </h1>
-        <p className="text-base font-medium">
+        <p className="text-lg font-medium">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, autem
           voluptatum hic quibusdam minima reiciendis dolores enim possimus.
         </p>
@@ -20,7 +20,7 @@ const HomePage = () => {
         <Image
           src={Hero}
           alt="hero img"
-          className="w-full h-auto object-cover "
+          className="w-full h-auto object-cover animate-little-Bounce"
         />
       </div>
     </div>

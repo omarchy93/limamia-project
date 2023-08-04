@@ -12,8 +12,11 @@ const About = () => {
           fill={true}
           className="object-cover grayscale"
         />
-        <div className="absolute bottom-5 left-5 bg-green-500 p-1 text-white">
-          <h1 className="font-bold text-xl">Digital storytelling</h1>
+        <div
+          className="absolute bottom-5 left-5  p-7 
+        rounded-full bg-gradient-to-b from-green-500 to-gray-300 bg-clip-text text-transparent"
+        >
+          <h1 className="font-bold text-6xl my-4 ">Digital storytelling</h1>
           <p className="font-bold text-lg">
             Digital tools and software make it easy and convenient to create a
             digital story.
