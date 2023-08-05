@@ -8,7 +8,7 @@ const HomePage = () => {
     <div className="flex items-center gap-24">
       <div className="flex-1 flex flex-col gap-12">
         <h1 className=" text-6xl font-bold bg-gradient-to-b from-green-500 to-gray-300 bg-clip-text text-transparent">
-          this is a design for Limamia
+          this design for Limamia
         </h1>
         <p className="text-lg font-medium">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, autem
