@@ -1,15 +1,63 @@
 import Image from "next/image";
 import React from "react";
 
-const BolgPost = () => {
+async function getData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/` + id, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+async function getUserData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/` + id, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const imgData = [
+  {
+    imgurl:
+      "https://images.pexels.com/photos/1468378/pexels-photo-1468378.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+
+  {
+    imgurl:
+      "https://images.pexels.com/photos/583124/pexels-photo-583124.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+
+  {
+    imgurl:
+      "https://images.pexels.com/photos/839633/pexels-photo-839633.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+
+  {
+    imgurl:
+      "https://images.pexels.com/photos/1500482/pexels-photo-1500482.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+];
+
+const BolgPost = async ({ params }) => {
+  const postData = await getData(params.id);
+  const userData = await getUserData(postData.userId);
+
+  const imgRandomItem = Math.floor(Math.random() * imgData.length);
+  const imgItem = (imgRandomItem, imgData[imgRandomItem]);
   return (
     <div>
       <div className="flex gap-10 p-5 m-5">
         <div className="flex-1 flex flex-col justify-start gap-6 text-justify">
-          <h1 className="text-xl font-bold">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus, ad tempora?
-          </h1>
+          <h1 className="text-xl font-bold">{postData.title}</h1>
           <p className="text-base font-semibold">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum,
             vel labore facere, mollitia fugiat culpa vitae iure velit voluptates
@@ -21,28 +69,19 @@ const BolgPost = () => {
           </p>
         </div>
         <div className=" flex-1 h-[400px] w-[420px] relative">
-          <Image
-            className=""
-            src={
-              "https://images.pexels.com/photos/1809644/pexels-photo-1809644.jpeg?auto=compress&cs=tinysrgb&w=600"
-            }
-            alt="hi"
-            fill={true}
-          />
+          <Image className="" src={imgItem.imgurl} alt="hi" fill={true} />
         </div>
       </div>
       <div className="p-5 m-5 ">
         <div className="h-10 w-10 relative ">
           <Image
-            src={
-              "https://images.pexels.com/photos/1809644/pexels-photo-1809644.jpeg?auto=compress&cs=tinysrgb&w=600"
-            }
+            src={imgItem.imgurl}
             alt="clint icon"
             fill={true}
             className="rounded-full"
           />
           <div className="m-14">
-            <p className="font-bold text-lg"> debaroti borsha</p>
+            <p className="font-bold text-lg"> {userData.name}</p>
           </div>
         </div>
       </div>

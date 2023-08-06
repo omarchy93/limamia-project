@@ -4,7 +4,7 @@ import React from "react";
 
 async function getData() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    next: { revalidate: 3600 },
+    next: { revalidate: 36 },
   });
 
   if (!res.ok) {
@@ -45,7 +45,7 @@ const Blog = async () => {
 
         const imgItem = (imgRandomItem, imgData[imgRandomItem]);
         return (
-          <Link href="/blog/textId" key={item.id}>
+          <Link href={"/blog/" + item.id} key={item.id}>
             <div className="flex gap-5">
               <div className=" flex-1 my-5 h-[300px] w-[400px] relative">
                 I
